@@ -2,8 +2,6 @@
 
 In this coursework you will be making a Binary Search Tree template class.  As with previous weeks, the coursework has two deadlines: one for the main part, and one for the advanced part.
 
-Note that part d is challenging, and not all students will manage to complete it fully.  This is not a cause for alarm: as this module is assessed 100% by coursework, it has to cover the same range of difficulty as a written examination, which ordinarily contain questions that not all students can answer well.
-
 Note that in answering these questions, you should not add any `#include` or `using` statements: you must implement the functionality yourself, without using any additional data structures from the standard library.  I have added `#include <memory>` for `std::unique_ptr`, `#include <utility>` for `std::pair`, and `#include <iostream>`.  If you have a convincing need for adding a different `#include` please post in the forum on KEATS.
 
 # Binary Search Trees, Main Part (7 marks)
