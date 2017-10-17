@@ -44,7 +44,7 @@ To test your code, compile and run TestTreeNode.cpp.  A Makefile has been provid
 
 ...at the command line.  This makes four tree nodes, linked to each other, then prints out the tree.
 
-## Making a tree
+## b) Making a tree
 
 In the file `tree.h` implement a template class BinarySearchTree.  This should use the `TreeNode` class you have written so far.
 
@@ -104,7 +104,7 @@ To test your code, compile and run TestTree.cpp.  A Makefile has been provided, 
 
 `make TestTree`  
 
-## TreeMap
+## c) TreeMap
 
 ### KeyValuePair
 In the file `treemap.h`, the incomplete class `KeyValuePair` defines a class that holds a key--value pair, that will be used to make a map.
