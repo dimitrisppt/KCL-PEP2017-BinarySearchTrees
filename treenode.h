@@ -45,14 +45,19 @@ class TreeNode {
   ostream& write(ostream & os) const {
 
       if (leftChild != nullptr) {
+
         os << " " << this->leftChild->leftChild->data << " " << " " << leftChild->data << " " << " " << leftChild->parent->data << " ";
 
       }
       if (rightChild != nullptr) {
         os << " " << rightChild->data << " ";
       }
+
+
     return os;
   }
+
+
 
 };
 
