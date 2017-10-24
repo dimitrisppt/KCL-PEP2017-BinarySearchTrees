@@ -12,7 +12,7 @@ class BinarySearchTree {
 
   public:
 
-    void write(ostream & os) const {
+    void  write(ostream & os) const {
       root->write(os);
     }
 
@@ -39,8 +39,8 @@ class BinarySearchTree {
 
       TreeNode<T>* newNode = new TreeNode<T>(data);
       root.reset(newNode);
-        // cout << "Test if null" << endl;
-        // cout << root.get()->data << endl;
+        cout << "Test if null" << endl;
+        cout << root.get()->data << endl;
       return root.get();
 
     } else {
