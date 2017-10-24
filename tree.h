@@ -39,7 +39,7 @@ class BinarySearchTree {
 
       TreeNode<T>* newNode = new TreeNode<T>(data);
       root.reset(newNode);
-        
+
       return root.get();
 
     } else {
@@ -62,77 +62,17 @@ class BinarySearchTree {
 
       if (current != nullptr) {
 
-        if (current->data == data) {
-          return current;
-        }
         if (data < current->data) {
           return findRec(current->leftChild.get(), data);
-        } else {
+        } else if (current->data < data){
           return findRec(current->rightChild.get(), data);
+        } else {
+          return current;
         }
       } else {
         return nullptr;
       }
     }
-
-
-
-    // TreeNode<T>* insert(const T & data) {
-    //
-    //   if () {
-    //     TreeNode<T>* newNode = new TreeNode<T>(data);
-    //     root.reset(newNode);
-    //     return newNode;
-    //
-    //   }
-    //
-    //   TreeNode<T>* parent = insertIteration(root, data);
-    //
-    //   if (data < parent.getData()) {
-    //     parent->setLeftChild(new TreeNode<T>(data));
-    //
-    //   } else {
-    //     parent->setRightChild(new TreeNode<T>(data));
-    //   }
-    //
-    //   return parent;
-    //
-    //
-    // }
-
-
-
-    //
-    // TreeNode<T>* insert(const T & data) {
-    //
-    //   if (!root == nullptr) {
-    //
-    //     TreeNode<T>* newNode = new TreeNode<T>(data);
-    //     root.reset(newNode);
-    //     return newNode;
-    //
-    //   } else {
-    //
-    //     while(root != nullptr) {
-    //
-    //       if (data < root->data) {
-    //         root->leftChild.get() = insert(data);
-    //         root.get()->setLeftChild(root->leftChild.get());
-    //
-    //       } else if (root->data < data){
-    //         root->rightChild.get() = insert(data);
-    //         root.get()->setRightChild(root->rightChild.get());
-    //
-    //       } else {
-    //         return root.get();
-    //       }
-    //
-    //     }
-    //   }
-    //   return root.get();
-    //
-    //
-    // }
 
 
 };
