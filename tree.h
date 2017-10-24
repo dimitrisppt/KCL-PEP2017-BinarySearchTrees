@@ -39,8 +39,7 @@ class BinarySearchTree {
 
       TreeNode<T>* newNode = new TreeNode<T>(data);
       root.reset(newNode);
-        cout << "Test if null" << endl;
-        cout << root.get()->data << endl;
+        
       return root.get();
 
     } else {
