@@ -5,16 +5,31 @@
 
 template<typename Key, typename Value>
 class KeyValuePair {
-    
+
 public:
-    
+
     const Key k;
     Value v;
-    
+
     // TODO your code for KeyValuePair goes here
-    
-    
-    
+    KeyValuePair(Key kIn, Value vIn)
+      : k(kIn), v(vIn) {
+    }
+
+    KeyValuePair(Key kIn)
+      : k(kIn) {
+      }
+
+    bool operator<(const KeyValuePair<const k, v> &pairs) const {
+
+      if (this->k < pairs.k) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+
 };
 
 
@@ -29,25 +44,25 @@ ostream & operator<< (ostream & o, const KeyValuePair<Key,Value> & kv){
 
 template<typename Key, typename Value>
 class TreeMap {
-  
+
 private:
     BinarySearchTree<KeyValuePair<Key,Value> > tree;
-    
+
 public:
-    
+
     KeyValuePair<Key,Value> * insert(const Key & k, const Value & v) {
         return &(tree.insert(KeyValuePair<Key,Value>(k,v))->data);
     }
-    
+
     void write(ostream & o) const {
         tree.write(o);
     }
-    
+
     // TODO your code for TreeMap goes here:
-    
-    
-    
-    
+
+
+
+
 };
 
 
