@@ -58,11 +58,7 @@ public:
 
     // TODO your code for TreeMap goes here:
     KeyValuePair<Key,Value> * find(const Key & k) {
-      if (tree.find(KeyValuePair<Key, Value>(k))->data) {
         return &(tree.find(KeyValuePair<Key, Value>(k))->data);
-      } else {
-        return nullptr;
-      }
     }
 
 
