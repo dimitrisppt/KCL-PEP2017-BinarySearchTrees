@@ -1,35 +1,35 @@
 #include "treenode.h"
 
 #include <iostream>
-#include <sstream> 
+#include <sstream>
 
 using std::cout;
 using std::endl;
 using std::ostringstream;
 
 int main() {
-    
+
     int retval = 0;
     {
         unique_ptr<TreeNode<int>> root(new TreeNode<int>(3));
-        
+
         if (root->data == 3) {
             cout << "1) Pass: a node initialised with '3' contains 3 as its data\n";
         } else {
             cout << "1) Fail: a node initialised with '3' should contain 3 as its data but contains " << root->data << "\n";
             ++retval;
         }
-        
+
         if (!root->parent) {
             cout << "2) Pass: a newly initialised node has a null parent\n";
         } else {
             cout << "2) Fail:  a newly initialised node should have a null parent but parent is " << root->parent << "\n";
             ++retval;
         }
-        
+
         auto leftChild = new TreeNode<int>(2);
         root->setLeftChild(leftChild);
-        
+
         if (root->leftChild.get() == leftChild) {
             cout << "3) Pass: the root correctly points to a left child added to it\n";
         } else {
@@ -45,7 +45,7 @@ int main() {
 
         auto rightChild =new TreeNode<int>(4);
         root->setRightChild(rightChild);
-        
+
         if (root->rightChild.get() == rightChild) {
             cout << "5) Pass: the root correctly points to a right child added to it\n";
         } else {
@@ -58,12 +58,12 @@ int main() {
             cout << "6) Fail: the right child of has parent " << rightChild->parent << " its parent should be root (" << root.get() << ")\n";
             ++retval;
         }
-        
+
         root->leftChild->setLeftChild(new TreeNode<int>(1));
-        
+
         ostringstream s;
         root->write(s);
-        
+
         if(s.str() == " 1  2  3  4 "){
             cout << "7) Pass: the tree prints correctly\n";
         } else {
@@ -73,12 +73,12 @@ int main() {
             cout << "     1" << endl;
             cout << "Should print as \" 1  2  3  4 \", but printed as \"" <<  s.str() << "\"\n";
             ++retval;
-         
+
         }
-        
+
         cout << "\n";
-    }         
-    
+    }
+
     return retval;
-    
+
 }

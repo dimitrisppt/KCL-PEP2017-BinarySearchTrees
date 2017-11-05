@@ -65,6 +65,92 @@ class TreeNode {
     return os;
   }
 
+  // ----------- Advanced Part
+
+  int maxDepth() {
+
+    int L = -1;
+    int R = -1;
+    if (leftChild == nullptr && rightChild == nullptr) {
+      return 1;
+    } else {
+
+    	if(leftChild){
+    		L = leftChild->maxDepth();
+    	}
+    	if(rightChild){
+    		R = rightChild->maxDepth();
+    	}
+      //<<"Left: " <<L<< " Right: "<< R<<endl;
+    	if(L>R){
+    		return L+1;
+    	}
+    	else{
+    		return R+1;
+    	}
+    }
+
+  }
+
+
+};
+
+
+template<typename T>
+class TreeNodeIterator {
+
+private:
+
+    TreeNode<T>* current;
+
+public:
+
+    TreeNodeIterator(TreeNode<T>* currentIn)
+        : current(currentIn) {
+    }
+
+    T & operator*() {
+        return current->data;
+    }
+
+    // TODO: complete the code for NodeIterator here
+    TreeNodeIterator<T> operator++() {
+      if(current->rightChild) {
+        current = current->rightChild.get();
+        //cout << " before first While" <<endl;
+        while (current->leftChild) {
+          current = current->leftChild.get();
+        }
+      //  cout << current->data  << " first return" << endl;
+        return TreeNodeIterator<T>(current);
+      } else {
+        T currentData = current->data;
+        //cout << "Before second while"<< endl;
+        while (current->parent && (currentData >= current->data)) {
+          current = current->parent;
+        }
+        if (current->data > currentData) {
+        //  cout << current->data << " second return" <<  endl;
+          return TreeNodeIterator<T>(current);
+        } else {
+          //cout << "We have reached the end" << endl;
+          current = nullptr;
+          return current;
+        }
+      }
+
+
+    }
+
+    bool operator==(const TreeNodeIterator<T>& itr) {
+      return current==itr.current;
+    }
+
+    bool operator!=(const TreeNodeIterator<T>& itr) {
+      return current!=itr.current;
+    }
+
+
 
 };
 
