@@ -7,10 +7,11 @@
 template<typename T>
 class BinarySearchTree {
 
-  private:
+  //private:
+public:
     unique_ptr<TreeNode<T>> root;
 
-  public:
+  //public:
 
     void  write(ostream & os) const {
       if(root){
@@ -36,29 +37,33 @@ class BinarySearchTree {
             if (balanceFactor(current->parent) == 2 && !(current->rightChild)) {
               rightRotation(current->parent);
             } else {
-              // -------------- Right-Left Rotation ---------------
-              TreeNode<T>* node1 = new TreeNode<T>(current->parent->data);
-              TreeNode<T>* node2 = new TreeNode<T>(current->data);
-              TreeNode<T>* var1 = new TreeNode<T>(data);
-              if (current->parent->parent == nullptr) {
+              if (current->parent->leftChild.get() == nullptr) {
+                // -------------- Right-Left Rotation ---------------
+                TreeNode<T>* node1 = new TreeNode<T>(current->parent->data);
+                TreeNode<T>* node2 = new TreeNode<T>(current->data);
+                TreeNode<T>* var1 = new TreeNode<T>(data);
+                if (current->parent->parent == nullptr) {
 
-                  root.reset(var1);
-                  var1->setLeftChild(node1);
-                  var1->setRightChild(node2);
+                    root.reset(var1);
+                    var1->setLeftChild(node1);
+                    var1->setRightChild(node2);
 
-              }else{
-                TreeNode<T>* parent = new TreeNode<T>(current->parent->parent->data);
-                if(parent->rightChild.get() == node1){
-                  parent->setRightChild(var1);
-                  var1->setLeftChild(node1);
-                  var1->setRightChild(node2);
+                }else{
+                  cout << "this part - rlRotate" << endl;
+                  //TreeNode<T>* parent = new TreeNode<T>(current->parent->parent->data);
+                  TreeNode<T>* parent = current->parent->parent;
 
-                } else {
-                  parent->setLeftChild(var1);
-                  var1->setLeftChild(node1);
-                  var1->setRightChild(node2);
-                }
+                  if(parent->rightChild.get() == node1){
+                    parent->setRightChild(var1);
+                    var1->setLeftChild(node1);
+                    var1->setRightChild(node2);
 
+                  } else {
+                    parent->setLeftChild(var1);
+                    var1->setLeftChild(node1);
+                    var1->setRightChild(node2);
+                  }
+               }
               }
             }
           }
@@ -82,7 +87,10 @@ class BinarySearchTree {
                     var1->setRightChild(node1);
 
                 } else{
-                  TreeNode<T>* parent = new TreeNode<T>(current->parent->parent->data);
+                  cout << "this part - lrRotate" << endl;
+                  //TreeNode<T>* parent = new TreeNode<T>(current->parent->parent->data);
+                  TreeNode<T>* parent = current->parent->parent;
+
                   if(parent->rightChild.get() == node1){
                     parent->setRightChild(var1);
                     var1->setLeftChild(node1);
@@ -228,7 +236,7 @@ class BinarySearchTree {
       temp->rightChild.reset(subRoot);
       subRoot->parent = temp;
     }
-    
+
 
 };
 
