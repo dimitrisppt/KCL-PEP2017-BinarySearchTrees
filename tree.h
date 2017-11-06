@@ -13,7 +13,9 @@ class BinarySearchTree {
   public:
 
     void  write(ostream & os) const {
-      root->write(os);
+      if(root){
+        root->write(os);
+      }
     }
 
     TreeNode<T>* insertIteration(TreeNode<T>* current, T data) {
@@ -34,7 +36,30 @@ class BinarySearchTree {
             if (balanceFactor(current->parent) == 2 && !(current->rightChild)) {
               rightRotation(current->parent);
             } else {
-              // left-right rotation
+              // -------------- Right-Left Rotation ---------------
+              TreeNode<T>* node1 = new TreeNode<T>(current->parent->data);
+              TreeNode<T>* node2 = new TreeNode<T>(current->data);
+              TreeNode<T>* var1 = new TreeNode<T>(data);
+              if (current->parent->parent == nullptr) {
+
+                  root.reset(var1);
+                  var1->setLeftChild(node1);
+                  var1->setRightChild(node2);
+
+              }else{
+                TreeNode<T>* parent = new TreeNode<T>(current->parent->parent->data);
+                if(parent->rightChild.get() == node1){
+                  parent->setRightChild(var1);
+                  var1->setLeftChild(node1);
+                  var1->setRightChild(node2);
+
+                } else {
+                  parent->setLeftChild(var1);
+                  var1->setLeftChild(node1);
+                  var1->setRightChild(node2);
+                }
+
+              }
             }
           }
 
@@ -45,7 +70,33 @@ class BinarySearchTree {
             if (balanceFactor(current->parent) == -2 && !(current->leftChild)) {
               leftRotation(current->parent);
             } else {
-              // right- left rotation
+              if (current->parent->rightChild.get() == nullptr) {
+                TreeNode<T>* node1 = new TreeNode<T>(current->parent->data);
+                TreeNode<T>* node2 = new TreeNode<T>(current->data);
+                TreeNode<T>* var1 = new TreeNode<T>(data);
+                // ------------ Left-Right Rotation -------------
+                if (current->parent->parent == nullptr) {
+
+                    root.reset(var1);
+                    var1->setLeftChild(node2);
+                    var1->setRightChild(node1);
+
+                } else{
+                  TreeNode<T>* parent = new TreeNode<T>(current->parent->parent->data);
+                  if(parent->rightChild.get() == node1){
+                    parent->setRightChild(var1);
+                    var1->setLeftChild(node1);
+                    var1->setRightChild(node2);
+
+                  } else {
+                    parent->setLeftChild(var1);
+                    var1->setLeftChild(node1);
+                    var1->setRightChild(node2);
+                  }
+
+                }
+
+              }
             }
 
           }
@@ -55,6 +106,9 @@ class BinarySearchTree {
   }
 
   TreeNode<T>* insert(T data) {
+    //cout << "inserting:" << data << ". Tree is: ";
+    // write(cout);
+    // cout<<endl;
 
     if (root == nullptr) {
 
@@ -174,20 +228,6 @@ class BinarySearchTree {
       temp->rightChild.reset(subRoot);
       subRoot->parent = temp;
     }
-
-    void leftRightRotation(TreeNode<T>* subRoot) {
-
-
-    }
-
-    void rightLeftRotation(TreeNode<T>* subRoot) {
-
-
-    }
-
-
-
-
 
 };
 
