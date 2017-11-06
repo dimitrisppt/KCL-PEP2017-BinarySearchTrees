@@ -228,6 +228,7 @@ class BinarySearchTree {
       temp->rightChild.reset(subRoot);
       subRoot->parent = temp;
     }
+    
 
 };
 
