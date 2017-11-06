@@ -36,7 +36,7 @@ public:
           if (current->parent) {
             if (balanceFactor(current->parent) == 2 && !(current->rightChild)) {
               rightRotation(current->parent);
-            } else {
+            } else if (!(current->parent->leftChild) && !(current->rightChild)){
               if (current->parent->leftChild.get() == nullptr) {
                 // -------------- Right-Left Rotation ---------------
                 TreeNode<T>* node1 = new TreeNode<T>(current->parent->data);
@@ -74,7 +74,7 @@ public:
           if (current->parent) {
             if (balanceFactor(current->parent) == -2 && !(current->leftChild)) {
               leftRotation(current->parent);
-            } else {
+            } else if (!(current->parent->rightChild) && !(current->leftChild)){
               if (current->parent->rightChild.get() == nullptr) {
                 TreeNode<T>* node1 = new TreeNode<T>(current->parent->data);
                 TreeNode<T>* node2 = new TreeNode<T>(current->data);
