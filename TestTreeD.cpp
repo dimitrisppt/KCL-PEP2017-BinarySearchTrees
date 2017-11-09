@@ -23,6 +23,8 @@ int main() {
             ++retval;
             cout << "1) Fail: the begin() and end() of an empty tree are not the same\n";
         }
+        tree.write(cout);
+        cout << " is the tree" << endl;
     }
     {
         BinarySearchTree<int> tree;
@@ -51,9 +53,10 @@ int main() {
             for (int & e : was) {
                 cout << " " << e;
             }
-
-            cout << endl;
+            //cout << endl;
         }
+        tree.write(cout);
+        cout << " is the tree and the root is " << tree.root->data <<endl;
 
 
 
@@ -72,6 +75,8 @@ int main() {
             ++retval;
             cout << "3) Fail: After inserting 1,2,3, max tree depth is " << tree.maxDepth() << ": is unbalanced, should be 2\n";
         }
+        tree.write(cout);
+        cout << " is the tree and the root is " << tree.root->data <<endl;
     }
 
 
@@ -89,6 +94,8 @@ int main() {
             ++retval;
             cout << "4) Fail: After inserting 1,2,3,4,5, max tree depth is " << tree.maxDepth() << ": is unbalanced, should be 3\n";
         }
+        tree.write(cout);
+        cout << " is the tree and the root is " << tree.root->data <<endl;
     }
 
 
@@ -106,6 +113,8 @@ int main() {
             ++retval;
             cout << "5) Fail: After inserting 5,4,3,2,1, max tree depth is " << tree.maxDepth() << ": is unbalanced, should be 3\n";
         }
+        tree.write(cout);
+        cout << " is the tree and the root is " << tree.root->data <<endl;
     }
 
     {
@@ -122,11 +131,13 @@ int main() {
             ++retval;
             cout << "6) Fail: After inserting 1,3,2, max tree depth is " << tree.maxDepth() << ": is unbalanced, should be 2\n";
         }
+        tree.write(cout);
+        cout << " is the tree and the root is " << tree.root->data <<endl;
     }
 
     {
         BinarySearchTree<int> tree;
-        vector<int> putIn{3,1,2};
+        vector<int> putIn{3,2,1};
 
         for (const int & e : putIn) {
             tree.insert(e);
@@ -138,6 +149,8 @@ int main() {
             ++retval;
             cout << "7) Fail: After inserting 3,1,2, max tree depth is " << tree.maxDepth() << ": is unbalanced, should be 2\n";
         }
+        tree.write(cout);
+        cout << " is the tree and the root is " << tree.root->data <<endl;
      }
 
     return retval;

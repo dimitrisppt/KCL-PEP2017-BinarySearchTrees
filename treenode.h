@@ -43,24 +43,25 @@ class TreeNode {
   }
 
   ostream& write(ostream & os) const {
+    //cout << "reaches node write" <<endl;
 
-      if (leftChild != nullptr) {
-        cout << "Check if it goes to leftChild" << endl;
+      if (leftChild) {
+        //cout << "Check if it goes to leftChild" << endl;
 
         leftChild->write(os);
         //os << " " << this->leftChild->leftChild->data << " " << " " << leftChild->data << " " << " " << leftChild->parent->data << " ";
 
       }
-
+      //cout << "reacher write data" <<endl;
       os << " " << data << " ";
 
-      if (rightChild != nullptr) {
-        cout << "Check if it goes to rightChild" << endl;
+      if (rightChild) {
+        //cout << "Check if it goes to rightChild" << endl;
 
         rightChild->write(os);
       }
 
-      cout << "Check treenode's write function" << endl;
+      //cout << "Check treenode's write function" << endl;
 
     return os;
   }
